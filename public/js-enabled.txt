@@ -1,6 +1,6 @@
 /me
-/l/*?**
 /buy
 /becomeSeller
 /deleteAccount
+/l/*
 /order/*
