@@ -1,0 +1,30 @@
+*, :root {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.divider {
+    border-bottom: 1px solid #e5e5e5;
+    margin: 20px 0;
+}
+
+.navbar {
+
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s;
+
+}
+.navbar:hover {
+
+    color: #303030;
+
+}
+
+.hide {
+
+    display: none;
+
+}

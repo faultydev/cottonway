@@ -1,0 +1,61 @@
+<html>
+
+    <title>Cotton Way - Me</title>
+    <%- include('../partials/head.ejs') %> 
+    <script defer src="/me.js"></script>
+
+    <body>
+
+        <%- include('../partials/nav.ejs') %>
+        <span style="position: relative; float: right; color: red;">This page is Javascript enabled for the analytics.</span>
+        
+        <h1 id="main">Your Profile</h1>
+        <p>Your private page for orders, earnings and your listings.</p>
+        <div class="hide" id="nosellerlinks">
+            <a id="bas" href="/becomeSeller">Become a Seller</a>
+        </div>
+        <div class="hide" id="sellerlinks">
+            <a id="bas" href="/newListing">New Listing</a>
+            <!--<a>|</a>
+            <a href="/editSellerProfile">Edit Seller Profile</a>-->
+            <a>|</a>
+            <a href="/profile/my">Public Profile</a>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div id="buying">
+            <h2>All Orders</h2>
+            <ul id="orders">
+                
+            </ul>
+            <a href="#" id="loadhis">Show/Hide History</a>
+            <ul id="oh" class="hide">
+                
+            </ul>
+        </div>
+        
+        <div id="sellerdiv" class="hide">
+            <div class="divider"></div>
+            <h2>Seller's Dashboard</h2>
+            <p>Earnings: <b id="earnings">0</b></p>
+            <p>Total Items Sold: <b id="sold">0</b></p>
+            <!--<p>Total Karma: <b id="karma">0</b></p>-->
+            
+            <div class="divider"></div>
+            
+            <p>Your Items:</p>
+            <ul id="item-list">
+                
+            </ul>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <a href="/me?action=logout">Logout</a>
+        <a>|</a>
+        <a href="#" onclick="refresh();">Force Refresh.</a>
+        
+    </body>
+    
+    </html>

@@ -1,0 +1,28 @@
+<html>
+
+    <title>Cotton Way - Home</title>
+    <%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include('./partials/nav.ejs') %>
+
+        <h1>Cotton Way</h1>
+
+        <p>Welcome to Cotton Way!</p>
+
+        <h2>Recent Listings:</h2>
+        <ul>
+            <% for (var i = 0; i < list.length; i++) { 
+                if (list[i] != 0) {%>
+                <li><a href="/l/<%= list[i].id %>"><%= list[i].name %></a></li>
+            <% }
+                    if(i == 10) {
+                        break;
+                    }
+        } %>
+        </ul>
+
+    </body>
+
+
+</html>

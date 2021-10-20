@@ -1,0 +1,66 @@
+<html>
+
+    <title>Cotton Way | Purchase <%= listing.name %> </title>
+    <%- include('../partials/head.ejs') %>
+
+    <body>
+
+        <%- include('../partials/nav.ejs') %>
+        <%- include('../partials/tokenWarn.ejs') %>
+
+        <div id="top-buyl"><br/>
+            <img width=140 src="<%= listing.image.src %>" alt="<%= listing.name %>">
+            <h1><%= listing.name %></h1>
+            <span>
+                Price: <%= listing.price %> <%- valuta %><br/>
+                Shipping fees: <%- listing.shipping_fee %> <%- valuta %> <br/>
+                Total <b>per piece</b>: <%= listing.price + listing.shipping_fee %> <%- valuta %> <br/>
+                Seller: <a href="/profile/<%= listing.owner %>"><%= listing.owner %></a>
+            </span>
+        </div>
+
+        <div class="divider"></div>
+        <!-- Shipping Address -->
+        <style>
+            form input {
+                margin-top: 5px;
+                margin-bottom: 2px;
+            }
+        </style>
+
+        <form action="/api/placeOrder" method="POST">
+            
+            <label>Details</label><br/>
+            <input type="number" step="1" name="quantity" max="<%= listing.max_quantity %> " placeholder="Quantity (max: <%= (listing.max_quantity == -1) ? 'unlimited' : listing.max_quantity %>)" required><br/>
+            <input type="text" name="sender" placeholder="Sender's XMR address" required><br/>
+            
+            <br/>
+            <label for="name">Name on the box</label><br/>
+            <input type="text" name="name" id="name" placeholder="Name" required><br/>
+
+            <br/>
+            <label>Shipping Address</label><br/>
+            <input type="text" name="address" id="address" placeholder="123 Main St." required><br/>
+            <input type="text" name="country" id="country" placeholder="Country" required><br/>
+            <input type="text" name="state" id="state" placeholder="State or Province" required><br/>
+            <input type="text" name="city" id="city" placeholder="City" required>
+            <input type="text" name="zip" id="zip" placeholder="Zip" required>
+
+            <input type="hidden" name="listing_id" value="<%= listing.id %>" required readonly>
+            <input type="hidden" name="username" value="<%= username %>" required readonly>
+            <input type="hidden" name="token" value="<%= token %>" required readonly>
+            <br/><br/>
+
+            <label style="color: gray;" for="use_middle_man">Use Cotton Way's fair payment provider?</label>
+            <input name="use_middle_man" disabled=true type="checkbox"><br/>
+            <label style="color: red;">Not available yet.</label>
+            <br/><br/>
+
+            <input type="submit" value="Place Order*"><br/>
+            <label>* = Upon placing the order you will be redirected to a payment page.</label>
+        
+        </form>
+
+    </body>
+
+</html>

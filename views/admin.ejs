@@ -1,0 +1,22 @@
+<html>
+
+    <title>Admin</title>
+    <%- include('partials/head.ejs') %>
+
+    <body>
+
+        <%- include('partials/nav.ejs') %>
+
+        <% if (message) { %>
+
+            <p>message: <%- message %></p>
+
+        <% } %>
+
+        <h1>Admin page</h1>
+        
+        <a href="/admin?action=dropTables">Drop Database</a>
+
+    </body>
+
+</html>

@@ -1,0 +1,43 @@
+<html>
+
+    <title>Cotton Way - <%= username %></title>
+    <%- include('../partials/head.ejs') %>
+
+    <body>
+        <%- include('../partials/nav.ejs') %>
+
+        <h1>Cotton Way</h1>
+
+        <h2><%= username %></h2>
+        <span>
+        <%if (user.seller == true) { %> seller<br/> <% } %> 
+        Created <%= new Date(user.created).toUTCString() %>
+        </span>
+
+        <% if (user.seller == true) { %>
+
+            <h3>Seller Profile</h3>
+
+            <p>
+                <%= user.selling.sellerProfile.description %>
+            </p>
+
+            <span>
+                XMR Address: <%= user.selling.receivingAddress %><br/>
+                Total successful orders: <%= user.selling.statistics.sold %><br/>
+            </span>
+
+            <h3>Listings:</h3>
+            <ul>
+                <% user.selling.listings.forEach(function(listID, i) { %>
+                    <%let listing = listings[listID];%>
+                    <li><a href="/l/<%= listID %>"><%= listing.name %> | <%= listing.price %></a></li>
+                <% }) %>
+            </ul>
+
+        <% } %>
+
+    </body>
+
+
+</html>

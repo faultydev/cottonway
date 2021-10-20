@@ -1,0 +1,45 @@
+<html>
+
+    <title>Cotton Way - listing</title>
+    <%- include('../partials/head.ejs') %>
+
+    <body>
+
+        <%- include('../partials/nav.ejs') %>
+
+        <h1>Cotton Way</h1>
+
+        <img height="250" src="<%= listing.image.src %>" href="<%= listing.image.href %>">
+        <h2><%= listing.name %></h2>
+        <p>Price: <%= listing.price + listing.shipping_fee %> <%- valuta %></p>
+        
+        <% if (listing.quantity > 0 || listing.quantity == -1) { %>
+            <a style="font-size: larger;" href="/buy?id=<%= id %>">Buy</a><br/>
+        <% } else { %>
+            <p style="color: red; font-weight: bold;">Sold out</p>
+        <% } %>
+
+        <div class="divider"></div>
+
+        <span style="font-size: small;">
+            Price without shipping: <%= listing.price %> <%- valuta %><br/>
+            Shipping fee: <%= listing.shipping_fee %> <%- valuta %><br/>
+            Quantity: <%= (listing.quantity == -1) ? 'unlimited' : listing.quantity %><br/>
+            Max quantity per order: <%= listing.max_quantity %><br/>
+            Sold by <a href="/profile/<%= listing.owner %>"><%= listing.owner %></a><br/>
+            ID: <%= listing.id %> <br/>
+        </span>
+
+        <div class="divider"></div>
+
+        <h3>Description:</h2>
+
+        <p><%= listing.description %></p>
+
+        <div class="divider"></div>
+
+        <a href="/l/<%- listing.id %>?action=edit">Edit Listing</a>
+
+    </body>
+
+</html>

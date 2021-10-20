@@ -1,0 +1,31 @@
+<html>
+
+    <title>Cotton Way | New Listing</title>
+    <%- include('../partials/head.ejs') %>
+
+    <body>
+
+        <%- include('../partials/nav.ejs') %>
+        <%- include('../partials/tokenWarn.ejs') %>
+
+        <h1>New Listing</h1>
+
+        <form action="/api/newListing" method="POST">
+
+            <input type="hidden" name="username" value="<%- username %>">
+            <input type="hidden" name="token" value="<%- token %>">
+
+            <input type="text" name="image" placeholder="image url"><br/>
+            <input type="text" name="name" placeholder="name" required><br/>
+            <input type="text" name="description" placeholder="description" required><br/>
+            <input type="number" step=any name="price" placeholder="price" required> <label><%- valuta %></label><br/>
+            <input type="number" step=any name="shipping_fee" placeholder="shipping_fee" required> <label><%- valuta %></label><br/>
+            <input type="number" name="quantity" placeholder="quantity" required><br/>
+            <input type="number" name="max_quantity" placeholder="max quantity" required><br/>
+            <input type="submit">
+
+        </form>
+
+    </body>
+
+</html>

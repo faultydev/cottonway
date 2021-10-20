@@ -1,0 +1,59 @@
+<html>
+
+    <title>Cotton Way | Order #<%= id %></title>
+    <%- include('../partials/head.ejs') %>
+
+    <% let cd = new Date(order.created) %>
+
+    <body>
+
+        <%- include('../partials/nav.ejs') %>
+        <%- include('../partials/tokenWarn.ejs') %>
+
+        <div class="divider"></div>
+
+        <h1>Order #<%= id %></h1>
+        
+        <span>
+            Item: <a href="/l/<%= order.listing %>"><%= listing.name %></a> <br/>
+            Seller: <a href="/profile/<%= order.seller %>"><%= order.seller %></a> <br/>
+            <br/>
+            Price: <%= listing.price %> <%- valuta %><br/>
+            Shipping fees: <%= listing.shipping_fee %> <%- valuta %><br/>
+            Quantity: <%= order.quantity %> <br/>
+            Total: <%= order.total %> <%- valuta %><br/>
+            <br/>
+            <% if (order.status != 'cancelled') { %>
+            Name: <%= order.shipping_address.name %> <br/>
+            Address: <%= order.shipping_address.address %> <br/>
+            City: <%= order.shipping_address.city %> <br/>
+            State: <%= order.shipping_address.state %> <br/>
+            Country: <%= order.shipping_address.country %> <br/>
+            Zip: <%= order.shipping_address.zip %> <br/>
+            <br/>
+            <% } %>
+            Order placed on <%= cd.toUTCString() %> by <%= order.buyer %> <br/>
+            Order status: <%= order.status %> <br/>
+        </span>
+
+        <div class="divider"></div>
+
+        <div id="links">
+            <% if(order.status == 'pending') { %> 
+                <a href="/order/<%= id %>?action=cancel">Cancel Order</a>
+            <% } %>
+
+            <% if (order.buyer == username && order.status == 'shipped') { %>
+                <a href="/order/<%= id %>?action=complete">Mark as delivered</a>
+            <% } %>
+
+            <% if(order.seller == username && order.status == 'pending') { %>
+                <a href="/order/<%= id %>?action=ship">Mark as shipped</a>
+            <% } %>
+        </div>
+
+        <div class="divider"></div>
+
+    </body>
+
+</html>

@@ -1,0 +1,27 @@
+<html>
+
+    <title>Cotton Way - Login</title>
+    <%- include('../partials/head.ejs') %> 
+
+    <body>
+
+        <%- include('../partials/nav.ejs') %>
+        <h1>Login page</h1>
+        <span>You will be redirected to "/me" and a cookie with the authorization token will be added.</span><br/>
+        <span style="color: red;">The option for validity duration will be available soon.</span><br/><br/>
+
+        <form action="/api/login" method="POST">
+
+            <label for="username">Username:</label><br/>
+            <input type="text" name="username" id="username" /><br/>
+            <label for="password">Password: </label><br/>
+            <input type="password" name="password" id="password" /><br/>
+            <input type="hidden" name="redirectUrl" value="<%= redirectUrl %>" />
+            <input type="submit" value="Login" /><br/>
+
+        </form>
+        <a href="/portal?type=register">No account?</a>
+
+    </body>
+
+</html>

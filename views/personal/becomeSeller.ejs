@@ -1,0 +1,29 @@
+<html>
+
+    <title>Cotton Way | Become a Seller</title>
+    <%- include('../partials/head.ejs') %>
+
+    <body>
+
+        <%- include('../partials/nav.ejs') %>
+        <h1>Become a seller on Cotton Way.</h1>
+        <span>Once you become a seller you may not leave this role.</span>
+        <br/><br/>
+        <form action="/api/becomeSeller" method="POST">
+            <label for="XMR">Your XMR Address:</label><br/>
+            <input placeholder="required" type="text" name="XMR" id="XMR" required><br/>
+            <% if (!username) { %>
+                <label for="username">Your username:</label><br/>
+                <input placeholder="required" type="text" name="username" id="username" required><br/>
+            <% } else { %>
+                <input type="hidden" name="username" id="username" value="<%= username %>">
+            <% } %>
+            <label for="password">Your password:</label><br/>
+            <input placeholder="required" type="password" name="password" id="password" required><br/><br/>
+            <input type="submit" value="Become a Seller">
+        </form>
+
+    </body>
+
+
+</html>

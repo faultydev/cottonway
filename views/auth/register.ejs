@@ -1,0 +1,25 @@
+<html>
+
+    <title>Cotton Way | Register</title>
+    <%- include('../partials/head.ejs') %>
+
+    <body>
+        <%- include('../partials/nav.ejs') %>
+
+        <h1>Register</h1>
+        <p>The freedom of Cotton Way is only a few clicks away!</p><br/>
+
+        <form action="/api/createuser" method="POST">
+
+            <label for="username">Username:</label><br/>
+            <input type="text" name="username" id="username" /><br/>
+            <label for="password">Password: </label><br/>
+            <input type="password" name="password" id="password" /><br/>
+            <input type="hidden" name="redirectUrl" value="<%= redirectUrl %>" />
+            <input type="submit" value="Register" /><br/>
+
+        </form>
+
+    </body>
+
+</html>

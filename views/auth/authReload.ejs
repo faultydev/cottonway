@@ -1,0 +1,37 @@
+<html>
+
+    <body>
+
+        <noscript>
+            please allow javascript to run
+            OR
+            add your username and token to the address bar like this:
+            <pre>"?username=<your username>&token=<your token>"</pre>
+            or if there already are query parameters
+            <pre>"?<query parameters>&username=<your username>&token=<your token>"</pre>
+        </noscript>
+
+        <script defer>
+            let ck = document.cookie;
+
+            /* cookies to json */
+            let ck_json = {};
+            let ck_arr = ck.split('; ');
+            for (let i = 0; i < ck_arr.length; i++) {
+                let ck_item = ck_arr[i].split('=');
+                ck_json[ck_item[0]] = ck_item[1];
+            }
+            if (!ck_json.token || !ck_json.username ) {
+                window.location.href = '/portal';
+            }
+            if(window.location.href.includes("?") == true) {
+                window.location = window.location.href + "&username=" + ck_json.username + "&token=" + ck_json.token;
+            } else {
+                window.location = window.location.href + "?username=" + ck_json.username + "&token=" + ck_json.token;
+            }
+        </script>
+
+    </body>
+
+
+</html>

@@ -1,0 +1,6 @@
+/me
+/l/*?**
+/buy
+/becomeSeller
+/deleteAccount
+/order/*

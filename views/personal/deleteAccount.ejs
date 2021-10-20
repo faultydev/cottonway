@@ -1,0 +1,23 @@
+<html>
+
+    <title>Delete your account.</title>
+    <%- include('../partials/head.ejs') %>
+
+    <body>
+        <%- include('../partials/nav.ejs') %>
+
+        <h1>Delete your account?</h1>
+
+        <form action="/api/deleteaccount" method="POST">
+            <label for="username">User to delete:</label>
+            <input type="text" name="username" value="<%- username %>" readonly><br/>
+            <input type="hidden" name="token" value="<%- token %>">
+            <input type="checkbox" name="certain">I'm absolutely certain and know I know I can't recover my account.</input><br/>    
+            <input type="submit" value="Delete Account">
+        </form>
+
+        </form>
+
+    </body>
+
+</html>

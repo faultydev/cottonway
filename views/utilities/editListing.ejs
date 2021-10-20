@@ -1,0 +1,51 @@
+<html>
+
+    <title>Edit Listing</title>
+    <%- include('../partials/head.ejs') %>
+
+    <body>
+        
+        <%- include('../partials/nav.ejs') %>
+
+        <h1>Edit valuta: db.private.valuta, listing: <%= listing.id %></h1>
+        <img height="150" src="<%- listing.image.src %>" alt="<%- listing.name %>">
+        
+        <h2><%- listing.name %></h2>
+
+        <form action="/api/changeListing" method="POST">
+        
+            <input type="hidden" name="id" value="<%- listing.id %>">
+            <input type="hidden" name="username" value="<%- username %>">
+            <input type="hidden" name="token" value="<%- token %>">
+
+            <label for="image">image url:</label><br/>
+            <input type="text" name="image" value="<%- listing.image.src %>"><br/>
+            <label for="description">description:</label><br/>
+            <input type="text" name="description" value="<%- listing.description %>"><br/>
+            <label for="price">price:</label><br/>
+            <input type="number" step="any" name="price" value="<%- listing.price %>"><br/>
+            <label for="shipping">shipping_fee:</label><br/>
+            <input type="number" step="any" name="shipping" value="<%- listing.shipping_fee%>"><br/>
+            <label for="quantity">quantity:</label><br/>
+            <input type="number" step="1" name="quantity" value="<%- listing.quantity %>"><br/>
+            <label for="max_quantity">max. quantity:</label><br/>
+            <input type="number" step="1" name="max_quantity" value="<%- listing.max_quantity %>"><br/>
+        
+            <input type="submit" value="Submit">
+
+        </form>
+
+        <div class="divider"></div>
+
+        <form action="/api/deleteListing" method="POST">
+        
+            <input type="hidden" name="id" value="<%- listing.id %>">
+            <input type="hidden" name="username" value="<%- username %>">
+            <input type="hidden" name="token" value="<%- token %>">
+
+            <input type="submit" value="Delete">
+        </form>
+
+    </body>
+
+</html>
